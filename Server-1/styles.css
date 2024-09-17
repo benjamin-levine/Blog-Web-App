@@ -1,0 +1,11 @@
+/* styles.css */
+form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #FAF9F6;
+}
+
+input[type = "text"] {
+    padding: 10px;
+    border: 1px solid;
+}

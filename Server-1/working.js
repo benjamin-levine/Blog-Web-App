@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-
 const app = express();
 
 app.set("view engine", "ejs");
@@ -8,11 +7,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-const blogPosts = [];
+var blogPosts = [];
 
 
 app.get("/", (req, res) => {
-    res.render("working", {
+    res.render("index", {
         blogPosts: blogPosts
     });
 });
@@ -28,23 +27,41 @@ app.post("/add", (req, res) => {
 
 
     blogPosts.push(post);
-
-    res.render('working', {
-        blogPosts: blogPosts
-    })
+    
 
     console.log(blogPosts);
+    res.render( 'index.ejs', {
+        blogPosts: blogPosts
+      });
 });
 
-app.post("/submit", (reg, res) => {
+/*
+app.post("/delete", (req, res) => {
+    splice
+
+    res.render( 'index.ejs', {
+        blogPosts: blogPosts
+      });
+});
+*/
+
+/*
+app.post("/edit", (req, res) => {
+    
+
+    res.render( 'index.ejs', {
+        blogPosts: blogPosts
+      });
+});
+*/
+
+/*
+app.post("/submit", (req, res) => {
     const postData = req.body["userName"];
-    res.render("working.ejs", {dataPost: postData});
+    res.render("index", {dataPost: postData});
 });
 
-/*app.get("/", (req, res) => {
-    res.render("/index", {
-    });
-});*/
+*/
 
 app.post("/register", (req, res) => {
     res.sendStatus(201);
